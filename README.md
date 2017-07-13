@@ -1,4 +1,4 @@
-# Etyl Commons
+# Etyl Commons [![Build Status](https://travis-ci.org/Harium/etyl-commons.svg?branch=master)](https://travis-ci.org/Harium/etyl-commons)
 
 Etyl's common classes
 
