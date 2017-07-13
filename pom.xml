@@ -12,10 +12,10 @@
     <url>http://github.com/harium/etyl-commons</url>
     <licenses>
         <license>
-          <name>GNU Lesser General Public License</name>
-          <url>http://www.gnu.org/licenses/lgpl.txt</url>
+            <name>GNU Lesser General Public License</name>
+            <url>http://www.gnu.org/licenses/lgpl.txt</url>
         </license>
-	<license>
+        <license>
             <name>Harium Commercial License</name>
             <url>http://www.harium.com/licenses/commercial.txt</url>
         </license>
