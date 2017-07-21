@@ -1,6 +1,6 @@
 package com.harium.etyl.commons.collision;
 
-import com.harium.etyl.commons.math.EtyllicaMath;
+import com.harium.etyl.commons.math.EtylMath;
 
 public class CollisionDetector {
 
@@ -246,8 +246,8 @@ public class CollisionDetector {
         final double cos = Math.cos(angle);
         final double sin = Math.sin(angle);
 
-        double p = EtyllicaMath.sqr(cos * (px - cx) + sin * (py - cy)) / (a * a);
-        double q = EtyllicaMath.sqr(sin * (px - cx) - cos * (py - cy)) / (b * b);
+        double p = EtylMath.sqr(cos * (px - cx) + sin * (py - cy)) / (a * a);
+        double q = EtylMath.sqr(sin * (px - cx) - cos * (py - cy)) / (b * b);
 
         return (p + q <= 1);
     }

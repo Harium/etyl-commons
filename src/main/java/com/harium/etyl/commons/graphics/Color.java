@@ -2,7 +2,7 @@ package com.harium.etyl.commons.graphics;
 
 public class Color {
 
-    public static final Color GREEN_ETYLLICA = new Color(0x50, 0xEF, 0x9F);
+    public static final Color GREEN_ETYL = new Color(0x50, 0xEF, 0x9F);
     public static final Color TRANSPARENT = new Color(0x00, 0x00, 0x00, 0x00);
     public static final Color BLACK = new Color(0x00, 0x00, 0x00);
     public static final Color BLUE_VIOLET = new Color(0x8A, 0x2B, 0xE2);

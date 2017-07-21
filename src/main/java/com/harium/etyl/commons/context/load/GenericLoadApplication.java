@@ -25,7 +25,7 @@ public class GenericLoadApplication extends DefaultLoadApplication {
     private int rectH = 32;
 
     private Color backgroundColor = Color.WHITE;
-    private Color foregroundColor = Color.GREEN_ETYLLICA;
+    private Color foregroundColor = Color.GREEN_ETYL;
 
     @Override
     public void load() {
