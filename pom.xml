@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.harium</groupId>
     <artifactId>etyl-commons</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.6</version>
     <packaging>jar</packaging>
     <name>Etyl Commons</name>
     <description>Etyl's common core</description>
@@ -47,6 +47,13 @@
         <gpg.executable>gpg2</gpg.executable>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>com.harium</groupId>
+            <artifactId>etyl</artifactId>
+            <version>1.0.4</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
