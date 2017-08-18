@@ -107,8 +107,6 @@ public abstract class Context extends Layer implements UIResizableComponent, Upd
      */
     protected int backgroundColor = -1;
 
-    protected int fps = 0;
-
     private boolean drawCursor = true;
 
     protected List<UIComponent> components = new ArrayList<UIComponent>();
@@ -262,14 +260,6 @@ public abstract class Context extends Layer implements UIResizableComponent, Upd
 
     protected void setNextApplication(Context nextApplication) {
         this.nextApplication = nextApplication;
-    }
-
-    public int getFps() {
-        return fps;
-    }
-
-    public void setFps(int fps) {
-        this.fps = fps;
     }
 
     public DefaultLoadApplication getLoadApplication() {
