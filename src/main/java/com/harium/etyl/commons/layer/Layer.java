@@ -7,10 +7,12 @@ import com.harium.etyl.core.graphics.Graphics;
 
 public class Layer extends GeometricLayer implements Drawable {
 
+    public static final int MAX_OPACITY = 0xff;
+
     /**
      * Opacity
      */
-    protected int opacity = 255;
+    protected int opacity = MAX_OPACITY;
 
     /**
      * Angle in degrees
