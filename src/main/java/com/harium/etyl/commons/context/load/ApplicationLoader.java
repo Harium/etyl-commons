@@ -59,9 +59,10 @@ public class ApplicationLoader {
                     getError();
                 }
             } else if (!finished) {
-                // Notify Listener
+                // Notify the Listener
                 finishLoading();
                 finished = true;
+                loadExecutor.shutdown();
             }
         }
     }

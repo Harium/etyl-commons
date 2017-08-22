@@ -17,7 +17,7 @@ public class ApplicationLoaderTest {
         loader.reloadApplication(listener, new FakeApplication());
         loader.loadApplication();
 
-        waitSeconds(3);
+        waitSeconds(1);
         Assert.assertEquals(1, listener.getCount());
     }
 
