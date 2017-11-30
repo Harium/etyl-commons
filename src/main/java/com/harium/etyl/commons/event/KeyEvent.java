@@ -83,12 +83,15 @@ public class KeyEvent {
 				return true;
 			}
 		}
-		return false; 
+		return false;
+	}
+
+	public void setChar(char c) {
+		amount = c;
 	}
 
 	public char getChar() {
-
-		if(amount > Character.MIN_VALUE && amount < Character.MAX_VALUE) {
+		if (amount > Character.MIN_VALUE && amount < Character.MAX_VALUE) {
 			return (char) amount;
 		}
 
