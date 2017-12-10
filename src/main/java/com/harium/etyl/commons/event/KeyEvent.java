@@ -3,11 +3,11 @@ package com.harium.etyl.commons.event;
 
 public class KeyEvent {
 
-	private int id = 0; 
-	private int key;  
+	private int id = 0;
+	private int key;
 	private KeyState state;
-	private int amount = Character.getNumericValue('\0');  
-	private long timestamp = -1;  
+	private int amount = Character.getNumericValue('\0');
+	private long timestamp = -1;
 	private boolean consumed = false;
 
 	public KeyEvent(int key, KeyState state) {
@@ -22,8 +22,8 @@ public class KeyEvent {
 
 		this.key = key;
 		this.amount = amount;
-		this.state = state; 
-	} 
+		this.state = state;
+	}
 
 	public KeyEvent(int id, int key, int amount, KeyState state) {
 		super();
@@ -31,7 +31,7 @@ public class KeyEvent {
 		this.id = id;
 		this.key = key;
 		this.amount = amount;
-		this.state = state; 
+		this.state = state;
 	}
 
 	public KeyEvent(int id, int key, int amount, KeyState state, long timestamp) {
@@ -41,7 +41,7 @@ public class KeyEvent {
 		this.key = key;
 		this.amount = amount;
 		this.state = state;
-		this.timestamp = timestamp; 
+		this.timestamp = timestamp;
 	}
 
 	public boolean isKeyDown(int keyCode) {
@@ -49,7 +49,7 @@ public class KeyEvent {
 			return false;
 		}
 
-		return this.key == keyCode && state == KeyState.PRESSED;   
+		return this.key == keyCode && state == KeyState.PRESSED;
 	}
 
 	public boolean isAnyKeyDown(int ... keyCodes) {
@@ -62,7 +62,7 @@ public class KeyEvent {
 			}
 		}
 
-		return false; 
+		return false;
 	}
 
 	public boolean isKeyUp(int keyCode) {
@@ -70,7 +70,7 @@ public class KeyEvent {
 			return false;
 		}
 
-		return this.key == keyCode && state == KeyState.RELEASED;   
+		return this.key == keyCode && state == KeyState.RELEASED;
 	}
 
 	public boolean isAnyKeyUp(int ... keyCodes) {
@@ -95,31 +95,31 @@ public class KeyEvent {
 			return (char) amount;
 		}
 
-		return CHAR_UNDEFINED; 
+		return CHAR_UNDEFINED;
 	}
 
 	public int getId() {
-		return id; 
+		return id;
 	}
 
 	public void setId(int id) {
-		this.id = id; 
+		this.id = id;
 	}
 
 	public int getKey() {
-		return key; 
+		return key;
 	}
 
 	public void setKey(int key) {
-		this.key = key; 
+		this.key = key;
 	}
 
 	public KeyState getState() {
-		return state; 
-	} 
-	
+		return state;
+	}
+
 	public void setTimestamp(long timestamp) {
-		this.timestamp = timestamp; 
+		this.timestamp = timestamp;
 	}
 
 	public long getTimestamp() {
@@ -128,15 +128,15 @@ public class KeyEvent {
 			return System.currentTimeMillis();
 		}
 
-		return timestamp; 
-	} 
-	
-	public void consume() {
-		consumed = true; 
+		return timestamp;
 	}
-	
+
+	public void consume() {
+		consumed = true;
+	}
+
 	public void setConsumed(boolean consumed) {
-		this.consumed = consumed; 
+		this.consumed = consumed;
 	}
 
 	public boolean isConsumed() {
@@ -149,7 +149,7 @@ public class KeyEvent {
 	public static final int KEY_LOCATION_RIGHT = 3;
 	public static final int KEY_LOCATION_STANDARD = 1;
 	public static final int KEY_LOCATION_UNKNOWN = 0;  //Keys
-	
+
 	// Virtual Keys
 	public static final int VK_0 = 48;
 	public static final int VK_1 = 49;
@@ -225,22 +225,7 @@ public class KeyEvent {
 	public static final int VK_EXCLAMATION_MARK = 517;
 	public static final int VK_F = 70;
 	public static final int VK_F1 = 112;
-	public static final int VK_F10 = 121;
-	public static final int VK_F11 = 122;
-	public static final int VK_F12 = 123;
-	public static final int VK_F13 = 61440;
-	public static final int VK_F14 = 61441;
-	public static final int VK_F15 = 61442;
-	public static final int VK_F16 = 61443;
-	public static final int VK_F17 = 61444;
-	public static final int VK_F18 = 61445;
-	public static final int VK_F19 = 61446;
 	public static final int VK_F2 = 113;
-	public static final int VK_F20 = 61447;
-	public static final int VK_F21 = 61448;
-	public static final int VK_F22 = 61449;
-	public static final int VK_F23 = 61450;
-	public static final int VK_F24 = 61451;
 	public static final int VK_F3 = 114;
 	public static final int VK_F4 = 115;
 	public static final int VK_F5 = 116;
@@ -248,6 +233,9 @@ public class KeyEvent {
 	public static final int VK_F7 = 118;
 	public static final int VK_F8 = 119;
 	public static final int VK_F9 = 120;
+	public static final int VK_F10 = 121;
+	public static final int VK_F11 = 122;
+	public static final int VK_F12 = 123;
 	public static final int VK_FINAL = 24;
 	public static final int VK_FIND = 65488;
 	public static final int VK_FULL_WIDTH = 243;
@@ -341,30 +329,20 @@ public class KeyEvent {
 	public static final int VK_X = 88;
 	public static final int VK_Y = 89;
 	public static final int VK_Z = 90;
-	
+
 	public static final int VK_ALT_RIGHT = KEY_LOCATION_RIGHT*100+VK_ALT;
 	public static final int VK_ALT_LEFT = KEY_LOCATION_LEFT*100+VK_ALT;
-	
+
 	public static final int VK_CTRL = VK_CONTROL;
 	public static final int VK_CTRL_RIGHT = KEY_LOCATION_RIGHT*100+VK_CTRL;
-	public static final int VK_CTRL_LEFT = KEY_LOCATION_LEFT*100+VK_CTRL;  
-		
+	public static final int VK_CTRL_LEFT = KEY_LOCATION_LEFT*100+VK_CTRL;
+
 	public static final int VK_SHIFT_RIGHT = KEY_LOCATION_RIGHT*100+VK_SHIFT;
 	public static final int VK_SHIFT_LEFT = KEY_LOCATION_LEFT*100+VK_SHIFT;
 
-	public static final int VK_NUMPAD_0 = KEY_LOCATION_NUMPAD*100+VK_0+48;
-	public static final int VK_NUMPAD_1 = KEY_LOCATION_NUMPAD*100+VK_1+48;
-	public static final int VK_NUMPAD_2 = KEY_LOCATION_NUMPAD*100+VK_2+48;
-	public static final int VK_NUMPAD_3 = KEY_LOCATION_NUMPAD*100+VK_3+48;
-	public static final int VK_NUMPAD_4 = KEY_LOCATION_NUMPAD*100+VK_4+48;
-	public static final int VK_NUMPAD_5 = KEY_LOCATION_NUMPAD*100+VK_5+48;
-	public static final int VK_NUMPAD_6 = KEY_LOCATION_NUMPAD*100+VK_6+48;
-	public static final int VK_NUMPAD_7 = KEY_LOCATION_NUMPAD*100+VK_7+48;
-	public static final int VK_NUMPAD_8 = KEY_LOCATION_NUMPAD*100+VK_8+48;
-	public static final int VK_NUMPAD_9 = KEY_LOCATION_NUMPAD*100+VK_9+48; 
 	public static final int VK_NUMPAD_DEL = KEY_LOCATION_NUMPAD*100+VK_DELETE-19;
 	public static final int VK_NUMPAD_INS = KEY_LOCATION_NUMPAD*100+VK_INSERT;
-	public static final int VK_NUMPAD_ENTER = KEY_LOCATION_NUMPAD*100+VK_ENTER; 
+	public static final int VK_NUMPAD_ENTER = KEY_LOCATION_NUMPAD*100+VK_ENTER;
 	public static final int VK_NUMPAD_DOWN_ARROW = KEY_LOCATION_NUMPAD*100+VK_DOWN+185;
 	public static final int VK_NUMPAD_UP_ARROW = KEY_LOCATION_NUMPAD*100+VK_UP+186;
 	public static final int VK_NUMPAD_RIGHT_ARROW = KEY_LOCATION_NUMPAD*100+VK_RIGHT+188;
@@ -372,9 +350,9 @@ public class KeyEvent {
 
 	// Japanese Keys
 	public static final int VK_ROMAJI = VK_JAPANESE_ROMAN;
-	
+
 	// Custom Keys
-	
+
 	// Alias
 	public static final int VK_UP_ARROW = VK_UP;
 	public static final int VK_DOWN_ARROW = VK_DOWN;
@@ -383,16 +361,16 @@ public class KeyEvent {
 	public static final int VK_DEL = VK_DELETE;
 	public static final int VK_ESC = VK_ESCAPE;
 	public static final int VK_SUPER = VK_WINDOWS;
-	
+
 	// Mobile Keys
 	public static final int VK_BACK = VK_ESC;
 	public static final int VK_HOME_SCREEN = VK_HOME;
 	public static final int VK_RECENT_APPS = 599;
-	
+
 	// Joystick Keys
 	public static final int VK_JOYSTICK_UP = JoystickEvent.UP;
 	public static final int VK_JOYSTICK_DOWN = JoystickEvent.DOWN;
-	public static final int VK_JOYSTICK_CENTER_Y = JoystickEvent.CENTER_Y; 
+	public static final int VK_JOYSTICK_CENTER_Y = JoystickEvent.CENTER_Y;
 	public static final int VK_JOYSTICK_LEFT = JoystickEvent.LEFT;
 	public static final int VK_JOYSTICK_RIGHT = JoystickEvent.RIGHT;
 	public static final int VK_JOYSTICK_CENTER_X = JoystickEvent.CENTER_X;
@@ -409,6 +387,10 @@ public class KeyEvent {
 	public static final int VK_JOYSTICK_BUTTON_10 = JoystickEvent.BUTTON_10;
 	public static final int VK_JOYSTICK_BUTTON_11 = JoystickEvent.BUTTON_11;
 	public static final int VK_JOYSTICK_BUTTON_12 = JoystickEvent.BUTTON_12;
+    public static final int VK_JOYSTICK_BUTTON_13 = JoystickEvent.BUTTON_13;
+    public static final int VK_JOYSTICK_BUTTON_14 = JoystickEvent.BUTTON_14;
+    public static final int VK_JOYSTICK_BUTTON_15 = JoystickEvent.BUTTON_15;
+    public static final int VK_JOYSTICK_BUTTON_16 = JoystickEvent.BUTTON_16;
 
 	public static final int VK_NONE = 0;
 }
