@@ -150,7 +150,7 @@ public class KeyEvent {
 	public static final int KEY_LOCATION_STANDARD = 1;
 	public static final int KEY_LOCATION_UNKNOWN = 0;  //Keys
 	
-	//Virtual Keys
+	// Virtual Keys
 	public static final int VK_0 = 48;
 	public static final int VK_1 = 49;
 	public static final int VK_2 = 50;
@@ -369,22 +369,13 @@ public class KeyEvent {
 	public static final int VK_NUMPAD_UP_ARROW = KEY_LOCATION_NUMPAD*100+VK_UP+186;
 	public static final int VK_NUMPAD_RIGHT_ARROW = KEY_LOCATION_NUMPAD*100+VK_RIGHT+188;
 	public static final int VK_NUMPAD_LEFT_ARROW = KEY_LOCATION_NUMPAD*100+VK_LEFT+189;
-	
-	public static final int VK_ABRE_COLCHETES = VK_OPEN_BRACKET;
-	public static final int VK_FECHA_COLCHETES = VK_CLOSE_BRACKET; 
-	public static final int VK_ABRE_CHAVES = VK_BRACELEFT;
-	public static final int VK_FECHA_CHAVES = VK_BRACERIGHT; 
-	public static final int VK_ARROBA = VK_AT;
-	public static final int VK_PONTO = VK_PERIOD;
-	public static final int VK_VIRGULA = VK_COMMA;
-	public static final int VK_DOIS_PONTOS = VK_COLON;
-	
-	//Japanese Keys
+
+	// Japanese Keys
 	public static final int VK_ROMAJI = VK_JAPANESE_ROMAN;
 	
-	//Custom Keys
+	// Custom Keys
 	
-	//Shortcuts
+	// Alias
 	public static final int VK_UP_ARROW = VK_UP;
 	public static final int VK_DOWN_ARROW = VK_DOWN;
 	public static final int VK_LEFT_ARROW = VK_LEFT;
@@ -393,12 +384,12 @@ public class KeyEvent {
 	public static final int VK_ESC = VK_ESCAPE;
 	public static final int VK_SUPER = VK_WINDOWS;
 	
-	//Mobile Keys
+	// Mobile Keys
 	public static final int VK_BACK = VK_ESC;
 	public static final int VK_HOME_SCREEN = VK_HOME;
 	public static final int VK_RECENT_APPS = 599;
 	
-	//Joystick Keys
+	// Joystick Keys
 	public static final int VK_JOYSTICK_UP = JoystickEvent.UP;
 	public static final int VK_JOYSTICK_DOWN = JoystickEvent.DOWN;
 	public static final int VK_JOYSTICK_CENTER_Y = JoystickEvent.CENTER_Y; 
