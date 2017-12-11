@@ -17,7 +17,7 @@ public class Layer extends GeometricLayer implements Drawable {
     /**
      * Angle in degrees
      */
-    protected double angle = 0;
+    protected double angle;
 
     /**
      * Reference point to scale and rotation
@@ -27,7 +27,7 @@ public class Layer extends GeometricLayer implements Drawable {
     /**
      * Scale factors
      */
-    protected double scaleX = 1, scaleY = 1;
+    protected double scaleX, scaleY;
 
     /**
      * If layer is visible
@@ -36,16 +36,25 @@ public class Layer extends GeometricLayer implements Drawable {
 
     public Layer() {
         super();
+        init();
     }
 
     public Layer(int x, int y) {
         super(x, y);
+        init();
     }
 
     public Layer(int x, int y, int w, int h) {
         super(x, y, w, h);
+        init();
         originX = w / 2;
         originY = h / 2;
+    }
+
+    private void init() {
+        angle = 0;
+        scaleX = 1;
+        scaleY = 1;
     }
 
     public int getOpacity() {
