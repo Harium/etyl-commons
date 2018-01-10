@@ -186,10 +186,10 @@ public class GeometricLayer implements Movable {
     }
 		
 	/*
-	 * Colision Methods
+	 * Collision Methods
 	 */
 
-    public boolean colideRectRect(GeometricLayer b) {
+    public boolean collideRectRect(GeometricLayer b) {
         return colideRectRect(b.getX(), b.getY(), b.getW(), b.getH());
     }
 
