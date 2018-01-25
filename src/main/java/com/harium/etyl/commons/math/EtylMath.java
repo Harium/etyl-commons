@@ -3,8 +3,13 @@ package com.harium.etyl.commons.math;
 public class EtylMath {
 
     public static double diffMod(double a, double b) {
-        double diff = a - b;
-        return mod(diff);
+        double result = a - b;
+        return mod(result);
+    }
+
+    public static double divMod(double a, double b) {
+        double result = a / b;
+        return mod(result);
     }
 
     public static double sqr(double a) {
