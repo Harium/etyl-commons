@@ -2,9 +2,10 @@ package com.harium.etyl.commons.interpolation;
 
 public interface Interpolator {
 	
-	public static final Interpolator LINEAR = new LinearInterpolator();
-	public static final Interpolator QUADRATIC = new QuadraticInterpolator();
-	public static final Interpolator REVERSE_QUADRATIC = new ReverseQuadraticInterpolator();
+	Interpolator LINEAR = new LinearInterpolator();
+	Interpolator QUADRATIC = new QuadraticInterpolator();
+	Interpolator REVERSE_QUADRATIC = new ReverseQuadraticInterpolator();
+	Interpolator RADIAL = new RadialInterpolator();
 	
 	double interpolate(double startValue, double endValue, double factor);
 	
