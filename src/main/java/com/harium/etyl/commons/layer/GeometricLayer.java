@@ -190,7 +190,7 @@ public class GeometricLayer implements Movable {
 	 */
 
     public boolean collideRectRect(GeometricLayer b) {
-        return colideRectRect(b.getX(), b.getY(), b.getW(), b.getH());
+        return collideRectRect(b.getX(), b.getY(), b.getW(), b.getH());
     }
 
     /**
@@ -200,12 +200,12 @@ public class GeometricLayer implements Movable {
      * @param bh
      * @return
      */
-    public boolean colideRectRect(int bx, int by, int bw, int bh) {
-        return CollisionDetector.colideRectRect(getX(), getY(), getW(), getH(), bx, by, bw, bh);
+    public boolean collideRectRect(int bx, int by, int bw, int bh) {
+        return CollisionDetector.collideRectRect(getX(), getY(), getW(), getH(), bx, by, bw, bh);
     }
 
-    public boolean colideRectPoint(int bx, int by) {
-        return CollisionDetector.colideRectPoint(getX(), getY(), getW(), getH(), bx, by);
+    public boolean collideRectPoint(int bx, int by) {
+        return CollisionDetector.collideRectPoint(getX(), getY(), getW(), getH(), bx, by);
     }
 
     /**
@@ -215,12 +215,12 @@ public class GeometricLayer implements Movable {
      * @param bh
      * @return
      */
-    public boolean colideCircleCircle(int bx, int by, int bw, int bh) {
-        return CollisionDetector.colideCircleCircle(getX(), getY(), getW(), getH(), bx, by, bw, bh);
+    public boolean collideCircleCircle(int bx, int by, int bw, int bh) {
+        return CollisionDetector.collideCircleCircle(getX(), getY(), getW(), getH(), bx, by, bw, bh);
     }
 
-    public boolean colideCircleCircle(GeometricLayer layer) {
-        return colideCircleCircle(layer.getX(), layer.getY(), layer.getW(), layer.getH());
+    public boolean collideCircleCircle(GeometricLayer layer) {
+        return collideCircleCircle(layer.getX(), layer.getY(), layer.getW(), layer.getH());
     }
 
     /**
@@ -228,11 +228,11 @@ public class GeometricLayer implements Movable {
      * @param py
      * @return
      */
-    public boolean colideCirclePoint(int px, int py) {
+    public boolean collideCirclePoint(int px, int py) {
         int radius = getW() / 2;
         int cx = getX() + radius;
         int cy = getY() + radius;
-        return CollisionDetector.colideCirclePoint(cx, cy, radius, px, py);
+        return CollisionDetector.collideCirclePoint(cx, cy, radius, px, py);
     }
 
 }

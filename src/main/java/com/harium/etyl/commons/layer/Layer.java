@@ -180,19 +180,19 @@ public class Layer extends GeometricLayer implements Drawable {
     public boolean onMouse(int mx, int my) {
         if (angle == 0) {
             if (scaleX == 1 && scaleY == 1) {
-                return CollisionDetector.colideRectPoint(getX(), getY(), getW(), getH(), mx, my);
+                return CollisionDetector.collideRectPoint(getX(), getY(), getW(), getH(), mx, my);
             } else {
                 int rw = (int) (getW() * getScaleX());
                 int rh = (int) (getH() * getScaleY());
-                return CollisionDetector.colideRectPoint(getX() - rw / 4, getY() - rh / 4, rw, rh, mx, my);
+                return CollisionDetector.collideRectPoint(getX() - rw / 4, getY() - rh / 4, rw, rh, mx, my);
             }
         } else {
             if (scaleX == 1 && scaleY == 1) {
-                return CollisionDetector.colideRectPoint(getX(), getY(), getW() / 2, getH() / 2, getAngle(), mx, my);
+                return CollisionDetector.collideRectPoint(getX(), getY(), getW() / 2, getH() / 2, getAngle(), mx, my);
             } else {
                 int rw = (int) (getW() * getScaleX());
                 int rh = (int) (getH() * getScaleY());
-                return CollisionDetector.colideRectPoint(getX() - rw / 4, getY() - rh / 4, rw / 2, rh / 2, getAngle(), mx, my);
+                return CollisionDetector.collideRectPoint(getX() - rw / 4, getY() - rh / 4, rw / 2, rh / 2, getAngle(), mx, my);
             }
         }
     }
@@ -216,19 +216,19 @@ public class Layer extends GeometricLayer implements Drawable {
     }
 
     @Override
-    public boolean colideRectPoint(int px, int py) {
+    public boolean collideRectPoint(int px, int py) {
         int rectWidth = (int) (getW() * getScaleX());
         int rectHeight = (int) (getH() * getScaleY());
 
-        return CollisionDetector.colideRectPoint(getX(), getY(), rectWidth, rectHeight, angle, px, py);
+        return CollisionDetector.collideRectPoint(getX(), getY(), rectWidth, rectHeight, angle, px, py);
     }
 
-    public boolean colide(Layer b) {
+    public boolean collide(Layer b) {
         if (getAngle() == 0 && b.getAngle() == 0) {
-            return CollisionDetector.colideRectRect(getX(), getY(), getW(), getH(),
+            return CollisionDetector.collideRectRect(getX(), getY(), getW(), getH(),
                     b.getX(), b.getY(), b.getW(), b.getH());
         } else {
-            return CollisionDetector.colidePolygon(getX(), getY(), getW(), getH(), getAngle(),
+            return CollisionDetector.collidePolygon(getX(), getY(), getW(), getH(), getAngle(),
                     b.getX(), b.getY(), b.getW(), b.getH(), b.getAngle());
         }
     }

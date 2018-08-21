@@ -4,19 +4,46 @@ import com.harium.etyl.commons.math.EtylMath;
 
 public class CollisionDetector {
 
-    public static boolean colideCirclePoint(float cx, float cy, float radius, int px, int py) {
+    private static final float EPSILON = 0;
 
+    public static boolean collideCirclePoint(float cx, float cy, float radius, int px, int py) {
         float dx = cx - px;
         float dy = cy - py;
+        float dist = (dx * dx) + (dy * dy);
 
-        if ((dx * dx) + (dy * dy) < radius * radius) {
+        if (dist - (radius * radius) <= EPSILON) {
             return true;
         }
 
         return false;
     }
 
-    public static boolean colideCircleRect(int cx, int cy, int radius, int rectX, int rectY, int rectW, int rectH) {
+    public static boolean collideCircleCircle(float cx1, float cy1, float radius1, float cx2, float cy2, float radius2) {
+        float dx = cx1 - cx2;
+        float dy = cy1 - cy2;
+        float radius = radius1 + radius2;
+        float dist = (dx * dx) + (dy * dy);
+
+        if (dist - (radius * radius) <= EPSILON) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean collideCircleCircle(int x, int y, int w, int h, int bx, int by, int bw, int bh) {
+        float radius = w / 2;
+        float cx = x + radius;
+        float cy = y + radius;
+
+        float bRadius = bw / 2;
+        float bCx = bx + radius;
+        float bCy = by + radius;
+
+        return collideCircleCircle(cx, cy, radius, bCx, bCy, bRadius);
+    }
+
+    public static boolean collideCircleRect(int cx, int cy, int radius, int rectX, int rectY, int rectW, int rectH) {
 
         double circleDistanceX = Math.abs(cx - rectX);
         double circleDistanceY = Math.abs(cy - rectY);
@@ -41,8 +68,7 @@ public class CollisionDetector {
         return (cornerDistance <= (radius * radius));
     }
 
-    public static boolean colideIsometricPoint(int x, int y, int w, int h, int px, int py) {
-
+    public static boolean collideIsometricPoint(int x, int y, int w, int h, int px, int py) {
         float mx = w / 2;
         float my = h / 2;
 
@@ -61,7 +87,7 @@ public class CollisionDetector {
     }
 
     //Checks collision with a vertical hexagon
-    public static boolean colideHexagonPoint(int x, int y, int w, int h, int px, int py) {
+    public static boolean collideHexagonPoint(int x, int y, int w, int h, int px, int py) {
         float mx = w / 4;
         float my = h / 2;
 
@@ -84,12 +110,12 @@ public class CollisionDetector {
     /**
      * Rectangle To Point.
      */
-    public static boolean colideRectPoint(double rectX, double rectY, double rectWidth, double rectHeight, double rectAngle, double pointX, double pointY) {
+    public static boolean collideRectPoint(double rectX, double rectY, double rectWidth, double rectHeight, double rectAngle, double pointX, double pointY) {
         double rectCenterX = rectX + rectWidth / 2;
         double rectCenterY = rectY + rectHeight / 2;
 
-        if (rectAngle == 0)   //High speed for rectangles without rotation
-            return colideRectPointByCenter(rectWidth, rectHeight, rectCenterX, rectCenterY, pointX, pointY);
+        if (rectAngle == 0)  //High speed for rectangles without rotation
+            return collideRectPointByCenter(rectWidth, rectHeight, rectCenterX, rectCenterY, pointX, pointY);
 
         final double cos = Math.cos(rectAngle);
         final double sin = Math.cos(rectAngle);
@@ -100,21 +126,21 @@ public class CollisionDetector {
         double cx = cos * rectCenterX - sin * rectCenterY;
         double cy = cos * rectCenterY + sin * rectCenterX;
 
-        return colideRectPointByCenter(rectWidth, rectHeight, cx, cy, tx, ty);
+        return collideRectPointByCenter(rectWidth, rectHeight, cx, cy, tx, ty);
     }
 
-    private static boolean colideRectPointByCenter(double rectWidth, double rectHeight, double rectCenterX, double rectCenterY, double pointX, double pointY) {
+    private static boolean collideRectPointByCenter(double rectWidth, double rectHeight, double rectCenterX, double rectCenterY, double pointX, double pointY) {
         return Math.abs(rectCenterX - pointX) < rectWidth / 2 && Math.abs(rectCenterY - pointY) < rectHeight / 2;
     }
 
-    public static boolean colideRectPoint(int x, int y, int w, int h, int pointX, int pointY) {
+    public static boolean collideRectPoint(int x, int y, int w, int h, int pointX, int pointY) {
         return pointX >= x && pointX <= x + w && pointY >= y && pointY <= y + h;
     }
 
     /**
      * Circle To Segment.
      */
-    private static boolean colideCircleLine(double circleCenterX, double circleCenterY, double circleRadius, double lineAX, double lineAY, double lineBX, double lineBY) {
+    private static boolean collideCircleLine(double circleCenterX, double circleCenterY, double circleRadius, double lineAX, double lineAY, double lineBX, double lineBY) {
         double lineSize = Math.sqrt(Math.pow(lineAX - lineBX, 2) + Math.pow(lineAY - lineBY, 2));
         double distance;
 
@@ -141,7 +167,7 @@ public class CollisionDetector {
     /**
      * Rectangle To Circle.
      */
-    public static boolean colideRectCircle(double rectWidth, double rectHeight, double rectRotation, double rectCenterX, double rectCenterY, double circleCenterX, double circleCenterY, double circleRadius) {
+    public static boolean collideRectCircle(double rectWidth, double rectHeight, double rectRotation, double rectCenterX, double rectCenterY, double circleCenterX, double circleCenterY, double circleRadius) {
         double tx, ty, cx, cy;
 
         if (rectRotation == 0) { //High speed for rectangles without rotation
@@ -158,21 +184,21 @@ public class CollisionDetector {
             cy = Math.cos(rectRotation) * rectCenterY + Math.sin(rectRotation) * rectCenterX;
         }
 
-        return colideRectPoint(rectWidth, rectHeight, rectRotation, rectCenterX, rectCenterY, circleCenterX, circleCenterY) ||
-                colideCircleLine(tx, ty, circleRadius, cx - rectWidth / 2, cy + rectHeight / 2, cx + rectWidth / 2, cy + rectHeight / 2) ||
-                colideCircleLine(tx, ty, circleRadius, cx + rectWidth / 2, cy + rectHeight / 2, cx + rectWidth / 2, cy - rectHeight / 2) ||
-                colideCircleLine(tx, ty, circleRadius, cx + rectWidth / 2, cy - rectHeight / 2, cx - rectWidth / 2, cy - rectHeight / 2) ||
-                colideCircleLine(tx, ty, circleRadius, cx - rectWidth / 2, cy - rectHeight / 2, cx - rectWidth / 2, cy + rectHeight / 2);
+        return collideRectPoint(rectWidth, rectHeight, rectRotation, rectCenterX, rectCenterY, circleCenterX, circleCenterY) ||
+                collideCircleLine(tx, ty, circleRadius, cx - rectWidth / 2, cy + rectHeight / 2, cx + rectWidth / 2, cy + rectHeight / 2) ||
+                collideCircleLine(tx, ty, circleRadius, cx + rectWidth / 2, cy + rectHeight / 2, cx + rectWidth / 2, cy - rectHeight / 2) ||
+                collideCircleLine(tx, ty, circleRadius, cx + rectWidth / 2, cy - rectHeight / 2, cx - rectWidth / 2, cy - rectHeight / 2) ||
+                collideCircleLine(tx, ty, circleRadius, cx - rectWidth / 2, cy - rectHeight / 2, cx - rectWidth / 2, cy + rectHeight / 2);
     }
 
     /**
      * Code found at: http://stackoverflow.com/a/21647567
      */
-    public static boolean colidePolygon(int ax, int ay, int aw, int ah, double angle, int bx, int by, int bw, int bh, double bAngle) {
+    public static boolean collidePolygon(int ax, int ay, int aw, int ah, double angle, int bx, int by, int bw, int bh, double bAngle) {
         Vector[] pointsA = getBounds(ax, ay, aw, ah, angle);
         Vector[] pointsB = getBounds(bx, by, bw, bh, bAngle);
 
-        return colidePoints(pointsA, pointsB);
+        return collidePoints(pointsA, pointsB);
     }
 
     public static Vector[] getBounds(int ax, int ay, int aw, int ah, double angle) {
@@ -214,13 +240,12 @@ public class CollisionDetector {
     }
 
     // collision check
-    public static boolean colidePoints(Vector[] pointsA, Vector[] pointsB) {
+    public static boolean collidePoints(Vector[] pointsA, Vector[] pointsB) {
         return !(isSeparate(pointsA, pointsB) || isSeparate(pointsB, pointsA));
     }
 
     // the following implementation expects the convex polygon's vertices to be in counter clockwise order
     private static boolean isSeparate(Vector[] coordsA, Vector[] coordsB) {
-
         edges:
         for (int i = 0; i < coordsA.length; i++) {
 
@@ -241,7 +266,7 @@ public class CollisionDetector {
         return false;
     }
 
-    public static boolean colideEllipsePoint(double cx, double cy, double angle, double a, double b, double px, double py) {
+    public static boolean collideEllipsePoint(double cx, double cy, double angle, double a, double b, double px, double py) {
 
         final double cos = Math.cos(angle);
         final double sin = Math.sin(angle);
@@ -252,7 +277,7 @@ public class CollisionDetector {
         return (p + q <= 1);
     }
 
-    public static boolean colideRectRect(int x, int y, int w, int h, int bx, int by, int bw, int bh) {
+    public static boolean collideRectRect(int x, int y, int w, int h, int bx, int by, int bw, int bh) {
         if (bx + bw < x) return false;
         if (bx > x + w) return false;
 
@@ -260,22 +285,6 @@ public class CollisionDetector {
         if (by > y + h) return false;
 
         return true;
-    }
-
-    public static boolean colideCircleCircle(int x, int y, int w, int h, int bx, int by, int bw, int bh) {
-        int xdiff = bx - x;
-        int ydiff = by - y;
-
-        int dcentre_sq = (ydiff * ydiff) + (xdiff * xdiff);
-
-        int r_sum_sq = bw / 2 + w / 2;
-        r_sum_sq *= r_sum_sq;
-
-        if (dcentre_sq - r_sum_sq <= 0) {
-            return true;
-        }
-
-        return false;
     }
 
     static class Vector {

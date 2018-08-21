@@ -41,12 +41,12 @@ public class LayerTest {
         int cx = rotatedLayer.getX() + rotatedLayer.getW() / 2;
         int cy = rotatedLayer.getY() + rotatedLayer.getH() / 2;
 
-        Assert.assertTrue(rotatedLayer.colideRectPoint(cx, cy));
-        Assert.assertTrue(rotatedLayer.colideRectPoint(220, 80));
+        Assert.assertTrue(rotatedLayer.collideRectPoint(cx, cy));
+        Assert.assertTrue(rotatedLayer.collideRectPoint(220, 80));
 
-        Assert.assertFalse(rotatedLayer.colideRectPoint(0, 0));
-        Assert.assertFalse(rotatedLayer.colideRectPoint(20, 60));
-        Assert.assertFalse(rotatedLayer.colideRectPoint(19, 60));
+        Assert.assertFalse(rotatedLayer.collideRectPoint(0, 0));
+        Assert.assertFalse(rotatedLayer.collideRectPoint(20, 60));
+        Assert.assertFalse(rotatedLayer.collideRectPoint(19, 60));
     }
 
     @Test

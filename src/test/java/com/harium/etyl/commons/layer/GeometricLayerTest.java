@@ -15,17 +15,17 @@ public class GeometricLayerTest {
 
     @Test
     public void testRectPointColision() {
-        Assert.assertTrue(layer.colideRectPoint(20, 20));
-        Assert.assertTrue(layer.colideRectPoint(0, 31));
-        Assert.assertTrue(layer.colideRectPoint(0, 32));
+        Assert.assertTrue(layer.collideRectPoint(20, 20));
+        Assert.assertTrue(layer.collideRectPoint(0, 31));
+        Assert.assertTrue(layer.collideRectPoint(0, 32));
 
-        Assert.assertFalse(layer.colideRectPoint(0, 33));
+        Assert.assertFalse(layer.collideRectPoint(0, 33));
     }
 
     @Test
     public void testCirclePointColision() {
-        Assert.assertTrue(layer.colideCirclePoint(layer.getW() / 2, layer.getH() / 2));
-        Assert.assertFalse(layer.colideCirclePoint(layer.getX() + layer.getW(), layer.getY()));
+        Assert.assertTrue(layer.collideCirclePoint(layer.getW() / 2, layer.getH() / 2));
+        Assert.assertFalse(layer.collideCirclePoint(layer.getX() + layer.getW(), layer.getY()));
     }
 
 }
