@@ -2,6 +2,8 @@ package com.harium.etyl.commons.graphics;
 
 public class Color {
 
+    public static final int MAX = 0xFF;
+
     public static final Color GREEN_ETYL = new Color(0x50, 0xEF, 0x9F);
     public static final Color TRANSPARENT = new Color(0x00, 0x00, 0x00, 0x00);
     public static final Color BLACK = new Color(0x00, 0x00, 0x00);
@@ -167,8 +169,12 @@ public class Color {
         this.rgb = argb(r, g, b, a);
     }
 
+    public Color(Color color) {
+        copy(color);
+    }
+
     public static int rgb(int red, int green, int blue) {
-        return (0xFF << 24) | (red << 16) | (green << 8) | blue;
+        return (MAX << 24) | (red << 16) | (green << 8) | blue;
     }
 
     public static int argb(int red, int green, int blue, int alpha) {
@@ -176,23 +182,27 @@ public class Color {
     }
 
     public int getAlpha() {
-        return (rgb >> 24) & 0xFF;
+        return (rgb >> 24) & MAX;
     }
 
     public int getRed() {
-        return (rgb >> 16) & 0xFF;
+        return (rgb >> 16) & MAX;
     }
 
     public int getGreen() {
-        return (rgb >> 8) & 0xFF;
+        return (rgb >> 8) & MAX;
     }
 
     public int getBlue() {
-        return rgb & 0xFF;
+        return rgb & MAX;
     }
 
     public int getRGB() {
         return rgb;
+    }
+
+    public void copy(Color color) {
+        this.rgb = color.rgb;
     }
 
     public Color darker(int intensity) {
@@ -225,8 +235,8 @@ public class Color {
 
     private static int brighter(int channel, int intensity) {
         int color = channel + intensity;
-        if (color > 255) {
-            color = 255;
+        if (color > MAX) {
+            color = MAX;
         }
         return color;
     }
