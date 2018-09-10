@@ -5,10 +5,10 @@ import com.harium.etyl.commons.context.load.ApplicationLoadListener;
 import com.harium.etyl.commons.context.load.DefaultLoadApplication;
 import com.harium.etyl.commons.dnd.DropTarget;
 import com.harium.etyl.commons.event.GUIEvent;
+import com.harium.etyl.commons.layer.Layer;
 import com.harium.etyl.commons.ui.UIComponent;
 import com.harium.etyl.commons.ui.UIResizableComponent;
 import com.harium.etyl.core.graphics.Graphics;
-import com.harium.etyl.commons.layer.Layer;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -17,7 +17,6 @@ import java.util.List;
 /**
  * Class to represent sessions of the Main Application like Mini-Applications.
  *
- * @author yuripourre
  */
 
 public abstract class Context extends Layer implements UIResizableComponent, Updatable, DropTarget {

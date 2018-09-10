@@ -3,9 +3,6 @@ package com.harium.etyl.commons.context.load;
 import com.harium.etyl.commons.graphics.Color;
 import com.harium.etyl.core.graphics.Graphics;
 
-/**
- * @author yuripourre
- */
 
 public class GenericLoadApplication extends DefaultLoadApplication {
 

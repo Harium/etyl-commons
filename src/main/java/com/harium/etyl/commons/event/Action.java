@@ -5,159 +5,154 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 
- * @author yuripourre
- *
- */
 
 public class Action {
 
-	private Object object;
+    private Object object;
 
-	private String methodName = "";
+    private String methodName = "";
 
-	private List<Object> parameters = new ArrayList<Object>();
+    private List<Object> parameters = new ArrayList<Object>();
 
-	/**
-	 * Constructor to execute methods without parameters (parameters can be setted later)
-	 *
-	 * @param object - object that have the component and the method to be executed
-	 * @param methodName - the name of a public method form object
-	 */
-	public Action(Object object, String methodName) {
-		super();
+    /**
+     * Constructor to execute methods without parameters (parameters can be setted later)
+     *
+     * @param object     - object that have the component and the method to be executed
+     * @param methodName - the name of a public method form object
+     */
+    public Action(Object object, String methodName) {
+        super();
 
-		this.object = object;
-		this.methodName = methodName;
-	}
-	
-	public Action(Object object, String methodName, List<Object> parameters){
-		this(object, methodName);
+        this.object = object;
+        this.methodName = methodName;
+    }
 
-		this.parameters.addAll(parameters);
-	}
+    public Action(Object object, String methodName, List<Object> parameters) {
+        this(object, methodName);
 
-	public Action(Object object, String methodName, Object ... parameters){
-		this(object, methodName);
+        this.parameters.addAll(parameters);
+    }
 
-		for(Object obj: parameters){
-			this.parameters.add(obj);	
-		}
+    public Action(Object object, String methodName, Object... parameters) {
+        this(object, methodName);
 
-	}
+        for (Object obj : parameters) {
+            this.parameters.add(obj);
+        }
 
-	public void executeAction(){
+    }
 
-		Method method = null;
+    public void executeAction() {
 
-		/**
-		 * Classes of parameters
-		 */
-		Class<?>[] classes = null;
-		Object[] values = null;
+        Method method = null;
 
-		if(!parameters.isEmpty()){
+        /**
+         * Classes of parameters
+         */
+        Class<?>[] classes = null;
+        Object[] values = null;
 
-			classes = new Class<?>[parameters.size()];
+        if (!parameters.isEmpty()) {
 
-			for(int i=0;i<parameters.size();i++){
-				classes[i] = parameters.get(i).getClass();
-			}
+            classes = new Class<?>[parameters.size()];
 
-			values = parameters.toArray();
+            for (int i = 0; i < parameters.size(); i++) {
+                classes[i] = parameters.get(i).getClass();
+            }
 
-		}else{
+            values = parameters.toArray();
 
-			classes = new Class<?>[]{};
+        } else {
 
-			values = new Object[]{};
-		}
+            classes = new Class<?>[]{};
 
-		//Creating method from Object Class.
-		//Telling the parameters' classes
+            values = new Object[]{};
+        }
 
-		Class<?> cls = object.getClass();
+        //Creating method from Object Class.
+        //Telling the parameters' classes
 
-		method = getMethod(cls, methodName, classes);
+        Class<?> cls = object.getClass();
 
-		if(method!=null){
-			//Invoking method with parameters
+        method = getMethod(cls, methodName, classes);
 
-			try {
-				method.invoke(object, values);
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
-			}
+        if (method != null) {
+            //Invoking method with parameters
 
-		}
+            try {
+                method.invoke(object, values);
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
 
-	}
+        }
 
-	private Method getMethod(Class<?> cls, String methodName, Class<?>[] classes){
+    }
 
-		for(Method method :cls.getMethods()){
+    private Method getMethod(Class<?> cls, String methodName, Class<?>[] classes) {
 
-			//Find method by name
-			if(method.getName().equals(methodName)){
+        for (Method method : cls.getMethods()) {
 
-				//Verify parameters length
-				if(method.getParameterTypes().length==classes.length){
+            //Find method by name
+            if (method.getName().equals(methodName)) {
 
-					for(int i=0; i<classes.length; i++){
+                //Verify parameters length
+                if (method.getParameterTypes().length == classes.length) {
 
-						Class<?> clazz = method.getParameterTypes()[i];
+                    for (int i = 0; i < classes.length; i++) {
 
-						if(clazz.isPrimitive()){
+                        Class<?> clazz = method.getParameterTypes()[i];
 
-							String name = classes[i].getSimpleName().toLowerCase();
+                        if (clazz.isPrimitive()) {
 
-							String parameterName = method.getParameterTypes()[i].getName();
+                            String name = classes[i].getSimpleName().toLowerCase();
 
-							if(!name.startsWith(parameterName)){
+                            String parameterName = method.getParameterTypes()[i].getName();
 
-								return null;
-							}
+                            if (!name.startsWith(parameterName)) {
 
-						}else{
+                                return null;
+                            }
 
-							Class<?> typ = method.getParameterTypes()[i].getComponentType();
+                        } else {
 
-							if(typ!=null){
+                            Class<?> typ = method.getParameterTypes()[i].getComponentType();
 
-								if(!classes[i].getName().equals(typ.getName())){
-									return null;
-								}
-								
-							}
+                            if (typ != null) {
 
-						}
+                                if (!classes[i].getName().equals(typ.getName())) {
+                                    return null;
+                                }
+
+                            }
+
+                        }
 
 
-					}
+                    }
 
-					return method;
+                    return method;
 
-				}
+                }
 
-			}
+            }
 
-		}
+        }
 
-		return null;		
+        return null;
 
-	}
+    }
 
-	public List<Object> getParameters() {
-		return parameters;
-	}
+    public List<Object> getParameters() {
+        return parameters;
+    }
 
-	public void setParameters(List<Object> parameters) {
-		this.parameters = parameters;
-	}
+    public void setParameters(List<Object> parameters) {
+        this.parameters = parameters;
+    }
 
 }

@@ -1,12 +1,12 @@
 package com.harium.etyl.commons.module;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.harium.etyl.commons.context.Context;
 import com.harium.etyl.commons.event.KeyEvent;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.core.graphics.Graphics;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModuleHandler {
 
