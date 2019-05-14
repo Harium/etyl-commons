@@ -6,7 +6,19 @@ public class CollisionDetector {
 
     private static final float EPSILON = 0;
 
-    public static boolean collideCirclePoint(float cx, float cy, float radius, int px, int py) {
+    public static boolean collideCirclePoint(float cx, float cy, float radius, float px, float py) {
+        float dx = cx - px;
+        float dy = cy - py;
+        float dist = (dx * dx) + (dy * dy);
+
+        if (dist - (radius * radius) <= EPSILON) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean collideCirclePoint(int cx, int cy, float radius, int px, int py) {
         float dx = cx - px;
         float dy = cy - py;
         float dist = (dx * dx) + (dy * dy);
