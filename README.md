@@ -2,7 +2,7 @@
 
 Etyl's common classes
 
-Compatible with [Desktop](https://github.com/Harium/etyl) and Android.
+Compatible with [Desktop](https://github.com/Harium/etyl) and [Android](https://github.com/Harium/etyl-gdx-android).
 
 
 ## License
