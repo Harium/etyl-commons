@@ -1,39 +1,83 @@
 package com.harium.etyl.commons.math;
 
+import com.badlogic.gdx.math.Vector2;
+
 public class Vector2i {
 
-    protected int x = 0;
-    protected int y = 0;
+    public int x = 0;
+    public int y = 0;
 
-    public Vector2i() {
-        super();
-    }
+    public Vector2i() {}
 
     public Vector2i(int x, int y) {
-        super();
-
-        setLocation(x, y);
+        this.set(x, y);
     }
 
-    public int getX() {
-        return x;
+    public Vector2i(Vector2i v) {
+        this.set(v);
     }
 
-    public void setX(int x) {
+    public void set(int x, int y) {
         this.x = x;
-    }
-
-    public void setLocation(int x, int y) {
-        setX(x);
-        setY(y);
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
         this.y = y;
+    }
+
+    public void set(Vector2i v) {
+        this.set(v.x, v.y);
+    }
+
+    public Vector2i cpy() {
+        return new Vector2i(this);
+    }
+
+    public static float len(float x, float y) {
+        return (float)Math.sqrt((double)(x * x + y * y));
+    }
+
+    public float len() {
+        return (float)Math.sqrt((double)(this.x * this.x + this.y * this.y));
+    }
+
+    public static float len2(float x, float y) {
+        return x * x + y * y;
+    }
+
+    public float len2() {
+        return this.x * this.x + this.y * this.y;
+    }
+
+    public Vector2i sub(Vector2 v) {
+        this.x -= v.x;
+        this.y -= v.y;
+        return this;
+    }
+
+    public Vector2i sub(float x, float y) {
+        this.x -= x;
+        this.y -= y;
+        return this;
+    }
+
+    public Vector2i nor() {
+        float len = this.len();
+        if (len != 0.0F) {
+            this.x /= len;
+            this.y /= len;
+        }
+
+        return this;
+    }
+
+    public Vector2i add(Vector2 v) {
+        this.x += v.x;
+        this.y += v.y;
+        return this;
+    }
+
+    public Vector2i add(float x, float y) {
+        this.x += x;
+        this.y += y;
+        return this;
     }
 
     public double angle(double px, double py) {
