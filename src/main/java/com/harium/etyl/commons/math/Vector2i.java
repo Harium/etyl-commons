@@ -1,7 +1,5 @@
 package com.harium.etyl.commons.math;
 
-import com.badlogic.gdx.math.Vector2;
-
 public class Vector2i {
 
     public int x = 0;
@@ -46,7 +44,7 @@ public class Vector2i {
         return this.x * this.x + this.y * this.y;
     }
 
-    public Vector2i sub(Vector2 v) {
+    public Vector2i sub(Vector2i v) {
         this.x -= v.x;
         this.y -= v.y;
         return this;
@@ -68,7 +66,7 @@ public class Vector2i {
         return this;
     }
 
-    public Vector2i add(Vector2 v) {
+    public Vector2i add(Vector2i v) {
         this.x += v.x;
         this.y += v.y;
         return this;
