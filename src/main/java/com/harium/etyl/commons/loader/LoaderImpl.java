@@ -1,5 +1,6 @@
 package com.harium.etyl.commons.loader;
 
+import com.harium.etyl.util.PathHelper;
 import com.harium.etyl.util.io.IOHelper;
 
 import java.net.MalformedURLException;
@@ -28,11 +29,27 @@ public class LoaderImpl implements Loader {
     }
 
     public URL getFullURL(String filename) throws MalformedURLException {
-        return new URL(url, folder + filename);
+        String baseFolder = folder;
+
+        // Fallback to current folder
+        if (baseFolder == null) {
+            baseFolder = "";
+        }
+
+        if (url == null) {
+            // Fallback to current directory
+            URL baseUrl = new URL(IOHelper.FILE_PREFIX + PathHelper.currentDirectory());
+            return new URL(baseUrl, baseFolder + filename);
+        }
+        return new URL(url, baseFolder + filename);
     }
 
     public String getPath() {
-        String path = url.toString();
+        String path = "";
+
+        if (url != null) {
+            path = url.toString();
+        }
 
         if (path.startsWith(IOHelper.FILE_PREFIX)) {
             path = path.substring(IOHelper.FILE_PREFIX.length());
@@ -51,6 +68,14 @@ public class LoaderImpl implements Loader {
     @Override
     public void dispose() {
 
+    }
+
+    public String getFolder() {
+        return folder;
+    }
+
+    public void setFolder(String folder) {
+        this.folder = folder;
     }
 
     public String fullPath(String path) {
@@ -80,6 +105,5 @@ public class LoaderImpl implements Loader {
     protected boolean isHttpContext() {
         return IOHelper.startsWithHttp(getPath());
     }
-
 
 }
