@@ -47,17 +47,27 @@
         <gpg.executable>gpg2</gpg.executable>
     </properties>
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>com.harium.etyl</groupId>
             <artifactId>etyl</artifactId>
             <version>[1.4.5,)</version>
             <scope>provided</scope>
             <optional>true</optional>
+        </dependency>-->
+        <dependency>
+            <groupId>com.harium.etyl</groupId>
+            <artifactId>geometry</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.harium.etyl</groupId>
+            <artifactId>io</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>

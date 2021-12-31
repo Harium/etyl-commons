@@ -1,8 +1,7 @@
 package com.harium.etyl.commons.context.load;
 
 import com.harium.etyl.commons.graphics.Color;
-import com.harium.etyl.core.graphics.Graphics;
-
+import com.harium.etyl.commons.graphics.Graphics;
 
 public class GenericLoadApplication extends DefaultLoadApplication {
 
