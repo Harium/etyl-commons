@@ -1,6 +1,6 @@
 package com.harium.etyl.commons.graphics.stroke;
 
-import com.harium.etyl.core.graphics.Graphics;
+import com.harium.etyl.commons.graphics.Graphics;
 
 public class DashedStroke extends BaseStroke {
 

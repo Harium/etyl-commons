@@ -1,7 +1,7 @@
 package com.harium.etyl.commons.layer;
 
 import com.harium.etyl.commons.Movable;
-import com.harium.etyl.commons.collision.CollisionDetector;
+import com.harium.etyl.geometry.collision.CollisionDetector;
 
 public class GeometricLayer implements Movable {
 

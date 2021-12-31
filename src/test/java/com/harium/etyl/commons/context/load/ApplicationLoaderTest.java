@@ -1,7 +1,7 @@
 package com.harium.etyl.commons.context.load;
 
 import com.harium.etyl.commons.context.Application;
-import com.harium.etyl.core.graphics.Graphics;
+import com.harium.etyl.commons.graphics.Graphics;
 import org.junit.Assert;
 import org.junit.Test;
 

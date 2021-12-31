@@ -1,6 +1,5 @@
 package com.harium.etyl.commons.loader;
 
-import com.harium.etyl.loader.Loader;
 import com.harium.etyl.util.io.IOHelper;
 
 import java.net.MalformedURLException;

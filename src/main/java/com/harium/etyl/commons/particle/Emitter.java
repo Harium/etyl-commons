@@ -2,7 +2,7 @@ package com.harium.etyl.commons.particle;
 
 import com.harium.etyl.commons.Drawable;
 import com.harium.etyl.commons.Updatable;
-import com.harium.etyl.core.graphics.Graphics;
+import com.harium.etyl.commons.graphics.Graphics;
 
 import java.util.ArrayList;
 import java.util.List;

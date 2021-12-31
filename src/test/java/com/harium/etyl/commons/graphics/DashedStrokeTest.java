@@ -1,7 +1,6 @@
 package com.harium.etyl.commons.graphics;
 
 import com.harium.etyl.commons.graphics.stroke.DashedStroke;
-import com.harium.etyl.core.graphics.Graphics;
 import org.junit.Before;
 import org.junit.Test;
 

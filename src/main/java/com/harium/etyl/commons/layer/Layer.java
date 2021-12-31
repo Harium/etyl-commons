@@ -1,9 +1,9 @@
 package com.harium.etyl.commons.layer;
 
 import com.harium.etyl.commons.Drawable;
-import com.harium.etyl.commons.collision.CollisionDetector;
+import com.harium.etyl.geometry.collision.CollisionDetector;
 import com.harium.etyl.commons.event.PointerEvent;
-import com.harium.etyl.core.graphics.Graphics;
+import com.harium.etyl.commons.graphics.Graphics;
 
 public class Layer extends GeometricLayer implements Drawable {
 

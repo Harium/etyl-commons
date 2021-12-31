@@ -3,7 +3,7 @@ package com.harium.etyl.commons.math;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.harium.etyl.commons.math.EtylMath;
+import com.harium.etyl.geometry.math.EtylMath;
 
 public class EtylMathTest {
 

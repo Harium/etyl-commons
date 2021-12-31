@@ -8,7 +8,7 @@ import com.harium.etyl.commons.event.GUIEvent;
 import com.harium.etyl.commons.layer.Layer;
 import com.harium.etyl.commons.ui.UIComponent;
 import com.harium.etyl.commons.ui.UIResizableComponent;
-import com.harium.etyl.core.graphics.Graphics;
+import com.harium.etyl.commons.graphics.Graphics;
 
 import java.io.File;
 import java.util.ArrayList;
