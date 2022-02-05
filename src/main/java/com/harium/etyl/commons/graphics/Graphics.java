@@ -12,8 +12,6 @@ public interface Graphics {
 
 	float getFps();
 
-	void resetImage();
-
 	int getWidth();
 	
 	int getHeight();
@@ -68,8 +66,6 @@ public interface Graphics {
 	void setAlpha(int percent);
 	
 	void resetAlpha();
-
-	void setClearAlpha(int percent);
 
 	/**
 	 * 
