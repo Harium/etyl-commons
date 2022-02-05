@@ -16,7 +16,7 @@ public class ApplicationLoader {
     private boolean called = false;
     private boolean finished = false;
     private ScheduledExecutorService loadExecutor;
-    private Future<?> future;
+    protected Future<?> future;
 
     private static final int UPDATE_INTERVAL = 50;
 

@@ -17,20 +17,7 @@ public class ApplicationLoaderTest {
         loader.reloadApplication(listener, new FakeApplication());
         loader.loadApplication();
 
-        waitSeconds(1);
-        Assert.assertEquals(1, listener.getCount());
-    }
-
-    private void waitSeconds(int seconds) {
-        int i = 0;
-        while (i < seconds) {
-            i++;
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        Assert.assertNotNull(loader.future);
     }
 
     private class FakeApplication extends Application {
